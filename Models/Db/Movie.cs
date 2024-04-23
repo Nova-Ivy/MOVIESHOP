@@ -7,15 +7,16 @@ namespace VanillaMovieShop.Models.Db
         public int Id { get; set; }
         
         [Required]
-        [Data]
+        [StringLength(100)]
         public string Title { get; set; }
 
-        [Required] 
+        [Required]
+        [StringLength(50)]
         public string Director { get; set; }
         
         [Required]
-        [DataType(DataType.DateTime)]
-        [Display()]
+        [StringLength(4)]
+        [Display(Name = "Release Year")]  
         public int ReleaseYear { get; set; }
         
         [Required]
