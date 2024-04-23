@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using VanillaMovieShop.Data;
+
 namespace VanillaMovieShop
 {
 	public class Program
@@ -8,8 +11,10 @@ namespace VanillaMovieShop
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidCastException("Default Connection not found");
 
-			var app = builder.Build();
+            builder.Services.AddDbContext<VanillaDbContext>(options => options.UseSqlServer(connectionString));
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
