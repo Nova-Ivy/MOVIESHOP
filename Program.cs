@@ -13,7 +13,10 @@ namespace VanillaMovieShop
 			builder.Services.AddControllersWithViews();
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidCastException("Default Connection not found");
 
-            builder.Services.AddDbContext<VanillaDbContext>(options => options.UseSqlServer(connectionString));
+			builder.Services.AddDbContext<VanillaDbContext>(
+			options => options.UseSqlServer(connectionString)
+			);
+			 
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
