@@ -1,9 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VanillaMovieShop.Services;
 
 namespace VanillaMovieShop.Controllers
 {
     public class OrderController : Controller
     {
+        private readonly ICustomerService _customerService;
+        private readonly IMovieService _movieService;
+
+        public OrderController(ICustomerService customerService, IMovieService movieService)
+        {
+            _customerService = customerService;
+            _movieService = movieService;
+        }
         public IActionResult Index()
         {
             return View();
@@ -16,11 +25,5 @@ namespace VanillaMovieShop.Controllers
         {
             return View();
         }
-
-        public IActionResult OrderHistory() 
-        {
-            return View();
-        }
-
     }
 }
