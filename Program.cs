@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VanillaMovieShop.Data;
+using VanillaMovieShop.Services;
 
 namespace VanillaMovieShop
 {
@@ -16,7 +17,7 @@ namespace VanillaMovieShop
 			builder.Services.AddDbContext<VanillaDbContext>(
 			options => options.UseSqlServer(connectionString)
 			);
-			 
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
