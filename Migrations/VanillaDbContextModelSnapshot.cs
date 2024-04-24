@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanillaMovieShop.Data;
 
@@ -12,11 +11,9 @@ using VanillaMovieShop.Data;
 namespace VanillaMovieShop.Migrations
 {
     [DbContext(typeof(VanillaDbContext))]
-    [Migration("20240423122059_Initial")]
-    partial class Initial
+    partial class VanillaDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,11 +106,10 @@ namespace VanillaMovieShop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ReleaseYear")
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -126,7 +122,7 @@ namespace VanillaMovieShop.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("VanillaMovieShop.Models.Order", b =>
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -145,7 +141,7 @@ namespace VanillaMovieShop.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("VanillaMovieShop.Models.OrderRow", b =>
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.OrderRow", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

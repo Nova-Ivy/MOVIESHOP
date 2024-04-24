@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using VanillaMovieShop.Models;
 using VanillaMovieShop.Models.Db;
 
 namespace VanillaMovieShop.Data
 {
-	public class VanillaDbContext : DbContext
+    public class VanillaDbContext : DbContext
 	{
 		public VanillaDbContext(DbContextOptions<VanillaDbContext> options) : base(options)
 		{

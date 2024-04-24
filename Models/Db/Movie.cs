@@ -15,19 +15,19 @@ namespace VanillaMovieShop.Models.Db
         public string Director { get; set; }
         
         [Required]
-        [StringLength(4)]
+      
         [Display(Name = "Release Year")]  
         public int ReleaseYear { get; set; }
-        
+
         [Required]
         [DataType(DataType.Currency)]
-        public int Price { get; set; }
-        
+        public decimal Price { get; set; }
+
         [Required]
-        public string? Genre { get; set; }
+        public string ? Genre { get; set; }
         
         [Required] 
-        public string? Actors { get; set; }
+        public string ? Actors { get; set; }
 
     }
 }

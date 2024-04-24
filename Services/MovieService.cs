@@ -3,7 +3,7 @@ using VanillaMovieShop.Models.Db;
 
 namespace VanillaMovieShop.Services
 {
-    public class MovieService
+    public class MovieService : IMovieService
     {
         private readonly VanillaDbContext _db;
         private readonly IConfiguration _configuration;
@@ -41,10 +41,10 @@ namespace VanillaMovieShop.Services
             return movies;
         }
 
-        public List<Movie> GetMostPopularMovie()
+        public List<Movie> GetPopularMovies()
         {
            var topMostPopularMovie = _db.Movies.OrderByDescending(m => m.ReleaseYear).FirstOrDefault();
-            return GetMostPopularMovie();
+            return GetPopularMovies();
         }
 
         public void AddMovie(Movie movie)
