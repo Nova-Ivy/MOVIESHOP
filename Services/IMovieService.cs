@@ -7,10 +7,10 @@ namespace VanillaMovieShop.Services
 
         List<Movie> GetMovies();
         Movie GetMovieById(int id);
-        List<Movie> GetMoviesByLeatest();
+        List<Movie> GetMoviesByLatest();
         List<Movie> GetMoviesByOldest();
         List<Movie> GetCheapestMovies();
         List<Movie> GetPopularMovies();
-        void AddMovie(Movie movie);
+        public void AddMovie(Movie movie);
     }
 }

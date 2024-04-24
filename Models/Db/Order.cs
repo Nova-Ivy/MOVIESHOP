@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace VanillaMovieShop.Models
+namespace VanillaMovieShop.Models.Db
 {
     public class Order
     {

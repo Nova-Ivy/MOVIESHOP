@@ -17,6 +17,9 @@ namespace VanillaMovieShop
 			builder.Services.AddDbContext<VanillaDbContext>(
 			options => options.UseSqlServer(connectionString)
 			);
+
+			builder.Services.AddScoped<IMovieService, MovieService>();
+
             builder.Services.AddScoped<ICustomerService, CustomerService>();
             var app = builder.Build();
 
