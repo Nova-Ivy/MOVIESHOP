@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VanillaMovieShop.Models.Db;
+//using VanillaMovieShop.Services; 
 
 namespace VanillaMovieShop.Controllers
 {
     public class CustomerController : Controller
     {
-        ////private readonly IMovieService  _movieService; 
+        //private readonly IMovieService _movieService;
         //private readonly ICustomerService _customerService;
+        
 
         //public CustomerController ICustomerService _customerService)
         //{ 
@@ -14,41 +16,41 @@ namespace VanillaMovieShop.Controllers
         //}
 
     public IActionResult Index()
-        {
-            //insert list/VM return list/VM 
+    {
+        //insert list/ VM return list / VM
             return View();
-        }
+    }
 
-        [HttpGet]
-        public IActionResult Create()
-        {   
-            return View();                       
-        }
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
 
-        [HttpPost]
-        public IActionResult Create(Customer customer)
+    [HttpPost]
+    public IActionResult Create(Customer customer)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid) 
-            {
-                //_customerService.AddCustomer(customer); 
-                return RedirectToAction("Index");
-            }
-            return View(customer);
+            //_customerService.AddCustomer(customer);
+            return RedirectToAction("Index");
         }
-        public IActionResult Details(Customer customer)
-        {  
-            //_customerService.ViewCustomer(customer)
+        return View(customer);
+    }
+    public IActionResult Details(Customer customer)
+    {
+        //_customerService.ViewCustomer(customer)
             return View(customer);
 
-        }
-        public IActionResult Delete(Customer customer)
+    }
+    public IActionResult Delete(Customer customer)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
-            {
-                //_customerService.DeleteCustomer(customer); 
-                return RedirectToAction("Index");
-            }
-            return View(customer);
+            //_customerService.DeleteCustomer(customer);
+            return RedirectToAction("Index");
+        }
+        return View(customer);
         }
 
 
