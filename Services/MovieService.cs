@@ -25,7 +25,7 @@ namespace VanillaMovieShop.Services
             return movie;
         }
 
-        public List<Movie> GetMoviesByLeatest()
+        public List<Movie> GetMoviesByLatest()
         {
             var movies = _db.Movies.OrderByDescending(m => m.ReleaseYear).ToList();
             return movies;
