@@ -42,7 +42,6 @@ namespace VanillaMovieShop.Controllers
         {
         //    _customerService.ViewCustomer(customer)
             return View(customer);
-
         }
         public IActionResult Delete(Customer customer)
         {
