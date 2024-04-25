@@ -36,6 +36,37 @@ namespace VanillaMovieShop.Controllers
             }
             return View(movie);
         }
+        public IActionResult Edit(int Id) 
+        {
+            var movie = _movieService.GetMovieById(Id);
+            return View(movie);
+        }
+        [HttpPost]
+        public IActionResult Edit(Movie movie)
+        {
+            if (ModelState.IsValid)
+            {
+                _movieService.EditMovie(movie);
+                return RedirectToAction("Index");
+            }
+            return View(movie);
+        }
+        public IActionResult Delete(int Id)
+        {
+            var movie = _movieService.GetMovieById(Id);
+                return View(movie);
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie movie) 
+        {
+            if (ModelState.IsValid)
+            {
+                _movieService.DeleteMovie(movie);
+                return RedirectToAction("Index");
+            }
+            return View(movie);
+        }
+
 
         public IActionResult Details(int id)
         {

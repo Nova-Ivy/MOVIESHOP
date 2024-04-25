@@ -52,5 +52,15 @@ namespace VanillaMovieShop.Services
             _db.Movies.Add(movie);
             _db.SaveChanges();
         }
+        public void EditMovie(Movie movie) 
+        {
+            _db.Movies.Update(movie);
+            _db.SaveChanges();
+        }
+        public void DeleteMovie(Movie movie)
+        {
+            _db.Movies.Remove(movie);
+            _db.SaveChanges();
+        }
     }
 }

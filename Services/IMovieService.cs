@@ -12,5 +12,7 @@ namespace VanillaMovieShop.Services
         List<Movie> GetCheapestMovies();
         List<Movie> GetPopularMovies();
         public void AddMovie(Movie movie);
+        public void EditMovie(Movie movie);
+        public void DeleteMovie(Movie movie);
     }
 }
