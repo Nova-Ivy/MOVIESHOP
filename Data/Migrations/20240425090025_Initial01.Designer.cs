@@ -12,8 +12,8 @@ using VanillaMovieShop.Data;
 namespace VanillaMovieShop.Migrations
 {
     [DbContext(typeof(VanillaDbContext))]
-    [Migration("20240424125951_Initial2")]
-    partial class Initial2
+    [Migration("20240425090025_Initial01")]
+    partial class Initial01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,7 +97,6 @@ namespace VanillaMovieShop.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Actors")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Director")
@@ -106,7 +105,9 @@ namespace VanillaMovieShop.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Genre")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")

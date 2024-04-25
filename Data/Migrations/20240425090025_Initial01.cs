@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VanillaMovieShop.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial2 : Migration
+    public partial class Initial01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,8 +43,9 @@ namespace VanillaMovieShop.Migrations
                     Director = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ReleaseYear = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Actors = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Actors = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
