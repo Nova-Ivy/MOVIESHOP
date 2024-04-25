@@ -1,5 +1,6 @@
 ﻿using VanillaMovieShop.Data;
 using VanillaMovieShop.Models;
+using VanillaMovieShop.Models.Db;
 
 namespace VanillaMovieShop.Services
 {
@@ -13,5 +14,13 @@ namespace VanillaMovieShop.Services
             _db = db;
             _configuration = configuration;
         }
+
+        public void AddCustomer(Customer customer)
+        { 
+            _db.Customers.Add(customer);
+            _db.SaveChanges();
+        }
+
+
     }
 }
