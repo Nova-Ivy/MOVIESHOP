@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Extenssions\" />
+    <Folder Include="Data\Migrations\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

@@ -23,11 +23,14 @@ namespace VanillaMovieShop.Models.Db
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Required]
-        public string ? Genre { get; set; }
+       
+        public string? Genre { get; set; }
         
-        [Required] 
-        public string ? Actors { get; set; }
+        
+        public string? Actors { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        public string?  Image {  get; set; }
 
     }
 }
