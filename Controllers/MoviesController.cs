@@ -51,11 +51,16 @@ namespace VanillaMovieShop.Controllers
             }
             return View(movie);
         }
-        [HttpPost]
-        public IActionResult Delete(int Id) 
+        public IActionResult Delete(int id)
         {
-         _movieService.DeleteMovie(Id);
-          return RedirectToAction("Index"); 
+            var movie = _movieService.GetMovieById(id);
+            return View(movie);
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _movieService.DeleteMovie(movie);
+            return RedirectToAction("Index");
         }
         public IActionResult Details(int id)
         {
