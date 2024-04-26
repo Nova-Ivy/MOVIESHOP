@@ -30,7 +30,8 @@ namespace VanillaMovieShop.Models.Db
         public string? Actors { get; set; }
 
         [DataType(DataType.ImageUrl)]
-        public string?  Image {  get; set; }
+
+        public string? Image {  get; set; }
 
     }
 }
