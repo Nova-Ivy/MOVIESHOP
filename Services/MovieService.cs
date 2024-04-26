@@ -58,15 +58,10 @@ namespace VanillaMovieShop.Services
             _db.Movies.Update(movie);
             _db.SaveChanges();
         }
-        public void DeleteMovie(int id)
+        public void DeleteMovie(Movie movie)
         {
-            var movie = _db.Movies.Find(id);
-            if (movie == null)
-            {
-                throw new InvalidOperationException("Movie not found");
-            }
-                _db.Movies.Remove(movie);
-                _db.SaveChanges();
+            _db.Movies.Remove(movie);
+            _db.SaveChanges();
         }
     }
 }
