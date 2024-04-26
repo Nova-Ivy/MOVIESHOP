@@ -13,6 +13,6 @@ namespace VanillaMovieShop.Services
         List<Movie> GetPopularMovies();
         public void AddMovie(Movie movie);
         public void EditMovie(Movie movie);
-        public void DeleteMovie(Movie movie);
+        public void DeleteMovie(int id);
     }
 }
