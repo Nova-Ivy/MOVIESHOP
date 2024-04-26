@@ -1,4 +1,5 @@
-﻿using VanillaMovieShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using VanillaMovieShop.Data;
 using VanillaMovieShop.Models.Db;
 
 namespace VanillaMovieShop.Services
@@ -57,10 +58,15 @@ namespace VanillaMovieShop.Services
             _db.Movies.Update(movie);
             _db.SaveChanges();
         }
-        public void DeleteMovie(Movie movie)
+        public void DeleteMovie(int id)
         {
-            _db.Movies.Remove(movie);
-            _db.SaveChanges();
+            var movie = _db.Movies.Find(id);
+            if (movie == null)
+            {
+                throw new InvalidOperationException("Movie not found");
+            }
+                _db.Movies.Remove(movie);
+                _db.SaveChanges();
         }
     }
 }
