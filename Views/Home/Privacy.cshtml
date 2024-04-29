@@ -1,6 +1,104 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿<!DOCTYPE html>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<body>
+
+   
+    <main>
+
+        <div class="container bg-white ">
+            <!--Content-->
+            <div class="col-12 me-0 pe-0 text-center">
+                <div class=" row">
+                    <div class=" p-3 <!--border--> bg-light">
+                        <h1 class="display-1">Vanilla Movie Shop</h1>
+                        <p class="lead">
+                            Welcome to Vanilla Movie Shop. This assignment is meant as an introduction to the use of Twitter Bootstrap – a framework for CSS that is used by many web developers today.
+                            You will make the page entirely from scratch, using Bootstrap classes combined with your own CSS rules to style your page. A suggested layout is available on the last page of this file.
+                        </p>
+                        <div class="row ">
+                            <div class="col-6 p ">
+                                <h1>News</h1>
+                                <p>
+                                    This assignment is meant as an introduction to the use of Twitter Bootstrap – a framework for CSS that is used by many web developers today.
+                                    You will make the page entirely from scratch, using Bootstrap classes combined with your own CSS rules to style your page. A suggested layout is available on the last page of this file.
+                                </p>
+                            </div>
+                            <div class="col-6 p ">
+                                <h1>New Release</h1>
+                                <p>
+                                    This assignment is meant as an introduction to the use of Twitter Bootstrap – a framework for CSS that is used by many web developers today.
+                                    You will make the page entirely from scratch, using Bootstrap classes combined with your own CSS rules to style your page. A suggested layout is available on the last page of this file.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/2024_movies__and_series.jpg" alt="2024" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1 class="text-bg-warning">Top 5 Newest Movie</h1>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Oldest5Movies">Top 5 Newest Movie</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/2023_movie_posters__7th.jpg"  alt="2023" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1 class="text-bg-warning">Top 5 Oldest Movie</h1>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Oldest5Movies">Top 5 Oldest Movie</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/2022_posters__2nd.jpg"  alt="New York" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1 class="text-bg-warning">Top 5 Cheapest Movie</h1>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Oldest5Movies">Top 5 Cheapest Movie</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+       
+        <!-- images -->
+        <div class ="d-grid gap-3 container btn-outline-primary bg-white">
+            <div class="row g-2 g-md-3">
+                <div class="col-6 ">
+                    <h3>Most Popular Movie</h3>
+                    <img class="w-100 p-3 <!--border--> bg-white " src="~/images/avatar2009.jpg" width="100%" height="100%" alt="c1">
+                </div>
+                <div class="col-6 ">
+                    <h3>Best Customer</h3>
+                    <img class="w-100 p-3 <!--border--> bg-white" src="~/images/dune2.jpg"  width="100%" height="100%" alt="c2">
+                </div>
+                
+            </div>
+        </div>
+
+    </main>
+
+
+  
+</body>
