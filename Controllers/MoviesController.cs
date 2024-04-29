@@ -68,9 +68,10 @@ namespace VanillaMovieShop.Controllers
             return View(movie);
         }
 
-        public IActionResult MovieByLatest()
+        public IActionResult NewestMovies()
         {
-            var movies = _movieService.GetMoviesByLatest();
+
+            var movies = _movieService.GetMoviesByLatest().Take(5);
             return View(movies);
         }
 
@@ -79,6 +80,20 @@ namespace VanillaMovieShop.Controllers
             var movies = _movieService.GetMoviesByOldest().Take(5);
             return View(movies);
         }
+        public IActionResult Cheapest5Movies()
+        {
+            var movies = _movieService.GetCheapestMovies().Take(5);
+            return View(movies);
+        }
+        public IActionResult PopOrder5Movies()
+        {
+            var movies = _movieService.PopOrderMovies().Take(5);
+            return View(movies);
+        }
+
+
+
+
     }
 
 }
