@@ -70,7 +70,7 @@ namespace VanillaMovieShop.Controllers
 
         public IActionResult MovieByLatest()
         {
-            var movies = _movieService.GetMoviesByLatest();
+            var movies = _movieService.GetMoviesByLatest().Take(5);
             return View(movies);
         }
 
