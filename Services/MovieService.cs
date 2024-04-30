@@ -22,8 +22,8 @@ namespace VanillaMovieShop.Services
 
         public Movie GetMovieById(int id)
         {
-            var movie = _db.Movies.FirstOrDefault(m => m.Id == id);
-            return movie;
+            var movies = _db.Movies.FirstOrDefault(m => m.Id == id);
+            return movies;
         }
 
         public List<Movie> GetMoviesByLatest()
@@ -38,16 +38,9 @@ namespace VanillaMovieShop.Services
         }
         public List<Movie> GetCheapestMovies()
         {
-            var movies = _db.Movies.OrderBy(m => m.ReleaseYear).ToList();
+            var movies = _db.Movies.OrderBy(m => m.Price).ToList();
             return movies;
         }
-
-        public List<Movie> GetPopularMovies()
-        {
-           var topMostPopularMovie = _db.Movies.OrderByDescending(m => m.ReleaseYear).FirstOrDefault();
-            return GetPopularMovies();
-        }
-
         public void AddMovie(Movie movie)
         {
             _db.Movies.Add(movie);
@@ -63,5 +56,12 @@ namespace VanillaMovieShop.Services
             _db.Movies.Remove(movie);
             _db.SaveChanges();
         }
+
+        public List<Movie> PopOrderMovies()
+        {
+            var topPopOrderMovies = _db.OrderRows.GroupBy(m => m.OrderId).Count();
+            return PopOrderMovies();
+        }
+
     }
 }

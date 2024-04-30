@@ -1,22 +1,39 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VanillaMovieShop.Models;
+using VanillaMovieShop.Models.ViewModels;
+using VanillaMovieShop.Services;
 
 namespace VanillaMovieShop.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+        private readonly IMovieService _movieService;
+        private readonly ILogger<HomeController> _logger;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogger<HomeController> logger, IMovieService movieService)
 		{
 			_logger = logger;
+			_movieService = movieService;
+
 		}
 
 		public IActionResult Index()
 		{
-			return View();
-		}
+			
+			var movieList = _movieService.GetMovies();
+			FrontVM frontVM = new FrontVM()
+			{
+               
+				NewestMovies = movieList.OrderByDescending(x => x.ReleaseYear).Take(5).ToList(),
+                OldestMovies = movieList.OrderBy(x => x.ReleaseYear).Take(5).ToList(),
+                //PopularMovies = movieList.GroupBy().Take(5).ToList()
+                CheapestMovies = movieList.OrderBy(x => x.Price).Take(5).ToList(),
+
+            };
+
+            return View(frontVM);
+        }
 
 		public IActionResult Privacy()
 		{

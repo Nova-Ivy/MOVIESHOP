@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model VanillaMovieShop.Models.ViewModels.FrontVM
+<div>
+@foreach (var item in Model.NewestMovies)
+{
+    @item.Title
 }
+</div>
+<hr />
+<div>
+    @foreach (var item in Model.OldestMovies)
+    {
+        @item.Title
+    }
+</div>
+<hr />
+<div>
+    @foreach (var item in Model.PopularMovies)
+    {
+        @item.Title
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<hr />
+<div>
+    @foreach (var item in Model.CheapestMovies)
+    {
+        @item.Title
+    }
 </div>
