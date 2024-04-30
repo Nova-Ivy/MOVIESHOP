@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using VanillaMovieShop.Models.Db;
 using VanillaMovieShop.Models.ViewModels;
 using VanillaMovieShop.Services;

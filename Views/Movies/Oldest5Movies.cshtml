@@ -1,39 +1,41 @@
 ﻿@model IEnumerable<VanillaMovieShop.Models.Db.Movie>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 
-<div class="container-fluid  ">
-    <div class="row gy-4">
-    @* card-deck *@
-    @foreach (var item in Model)
-    {
-       
-            <div class="col-md-3 ">
+    <div class="container-fluid  ">
+        <div class="row gy-4">
+            @* card-deck *@
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-3 ">
                     <div class="card h-100 gap-2">
                         <img class="card-img-top" src="/Images/@item.Image" width="150" height="300" alt="Image">
-                            @* @Html.DisplayFor(modelItem => item.Image)  *@
-               
-                <div class="card-body">
-                            
+                        @* @Html.DisplayFor(modelItem => item.Image)  *@
+
+                        <div class="card-body">
+
                             @Html.DisplayNameFor(model => model.Title)         : @Html.DisplayFor(modelItem => item.Title)<br />
                             @Html.DisplayNameFor(model => model.Director)      : @Html.DisplayFor(modelItem => item.Director)<br />
                             @Html.DisplayNameFor(model => model.ReleaseYear)   : @Html.DisplayFor(modelItem => item.ReleaseYear)<br />
                             @Html.DisplayNameFor(model => model.Price)         : @Html.DisplayFor(modelItem => item.Price)<br />
                             @Html.DisplayNameFor(model => model.Genre)         : @Html.DisplayFor(modelItem => item.Genre)<br />
                             @Html.DisplayNameFor(model => model.Actors)        : @Html.DisplayFor(modelItem => item.Actors)<br />
-     
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
                         </div>
 
-                    <a href="#" class="btn btn-primary text-white">Add to Cart</a>
-                    
+                        <a href="#" class="btn btn-primary text-white">Add to Cart</a>
+            
+                    </div>
                 </div>
-             </div>
-        
 
-    }
+
+            }
+        </div>
     </div>
-    </div>
- 
+            
+  
