@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using VanillaMovieShop.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using VanillaMovieShop.Services;
 
 namespace VanillaMovieShop.Controllers
@@ -24,6 +26,29 @@ namespace VanillaMovieShop.Controllers
         public IActionResult OrderDetails() 
         {
             return View();
+        }
+      
+        //public IActionResult AddToCart(int movieId)
+
+        //{
+
+        //    var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+        //    cartList.Add(movieId);
+
+        //   HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+
+        //   return RedirectToAction("Index", "Movie");
+
+     
+        //}
+
+        [HttpPost]
+        public IActionResult AddToCart(int movieId)
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Add(movieId);
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(new { Value = cartList.Count() });
         }
     }
 }
