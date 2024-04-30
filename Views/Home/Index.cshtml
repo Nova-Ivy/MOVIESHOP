@@ -1,29 +1,16 @@
 ﻿@model VanillaMovieShop.Models.ViewModels.FrontVM
-<div>
-@foreach (var item in Model.NewestMovies)
-{
-    @item.Title
-}
-</div>
-<hr />
-<div>
-    @foreach (var item in Model.OldestMovies)
-    {
-        @item.Title
-    }
-</div>
-<hr />
-<div>
-    @foreach (var item in Model.PopularMovies)
-    {
-        @item.Title
-    }
+<h3 class="text-white"> Our Top Newest Movies</h3>
+<partial name="_MoviePartial" model="@Model.NewestMovies" />
 
-</div>
-<hr />
-<div>
-    @foreach (var item in Model.CheapestMovies)
-    {
-        @item.Title
-    }
-</div>
+
+<h3 class="text-white"> Our Top Oldest Movies</h3>
+    <partial name="_MoviePartial" model="@Model.OldestMovies" />
+
+
+<h3 class="text-white"> Our Cheapest Movies</h3>
+    <partial name="_MoviePartial" model="@Model.CheapestMovies" />
+
+
+<h3 class="text-white"> Our most Popular Movies</h3>
+    <partial name="_MoviePartial" model="@Model.PopularMovies" />
+

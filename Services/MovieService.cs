@@ -57,10 +57,10 @@ namespace VanillaMovieShop.Services
             _db.SaveChanges();
         }
 
-        public List<Movie> PopOrderMovies()
+        public List<Movie> PopularOrderMovies()
         {
             var topPopOrderMovies = _db.OrderRows.GroupBy(m => m.OrderId).Count();
-            return PopOrderMovies();
+            return PopularOrderMovies();
         }
 
     }

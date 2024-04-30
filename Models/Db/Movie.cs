@@ -33,5 +33,7 @@ namespace VanillaMovieShop.Models.Db
 
         public string? Image {  get; set; }
 
+        public virtual ICollection<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
+
     }
 }

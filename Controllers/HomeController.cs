@@ -24,10 +24,11 @@ namespace VanillaMovieShop.Controllers
 			var movieList = _movieService.GetMovies();
 			FrontVM frontVM = new FrontVM()
 			{
-               
+
+				//NewestMovies = _movieService.GetMoviesByLatest(),
 				NewestMovies = movieList.OrderByDescending(x => x.ReleaseYear).Take(5).ToList(),
                 OldestMovies = movieList.OrderBy(x => x.ReleaseYear).Take(5).ToList(),
-                //PopularMovies = movieList.GroupBy().Take(5).ToList()
+                PopularMovies = movieList.OrderByDescending(m => m.OrderRows.Count).Take(5).ToList(),
                 CheapestMovies = movieList.OrderBy(x => x.Price).Take(5).ToList(),
 
             };
