@@ -10,7 +10,7 @@ namespace VanillaMovieShop.Services
         List<Movie> GetMoviesByLatest();
         List<Movie> GetMoviesByOldest();
         List<Movie> GetCheapestMovies();
-        List<Movie> PopOrderMovies();
+        List<Movie> PopularOrderMovies();
         public void AddMovie(Movie movie);
         public void EditMovie(Movie movie);
         public void DeleteMovie(Movie movie);

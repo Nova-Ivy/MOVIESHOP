@@ -85,9 +85,9 @@ namespace VanillaMovieShop.Controllers
             var movies = _movieService.GetCheapestMovies().Take(5);
             return View(movies);
         }
-        public IActionResult PopOrder5Movies()
+        public IActionResult PopularOrder5Movies()
         {
-            var movies = _movieService.PopOrderMovies().Take(5);
+            var movies = _movieService.PopularOrderMovies().Take(5);
             return View(movies);
         }
 
