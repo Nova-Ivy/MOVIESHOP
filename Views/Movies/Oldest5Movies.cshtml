@@ -2,19 +2,19 @@
 
 
 
-    <div class="container-fluid  ">
+    <div class="container-fluid ">
         <div class="row gy-4">
             @* card-deck *@
             @foreach (var item in Model)
             {
 
-                <div class="col-md-3 ">
+                <div class="col-md-2 ">
                     <div class="card h-100 gap-2">
                         <img class="card-img-top" src="/Images/@item.Image" width="150" height="300" alt="Image">
                         @* @Html.DisplayFor(modelItem => item.Image)  *@
-
+                    
                         <div class="card-body">
-
+                           
                             @Html.DisplayNameFor(model => model.Title)         : @Html.DisplayFor(modelItem => item.Title)<br />
                             @Html.DisplayNameFor(model => model.Director)      : @Html.DisplayFor(modelItem => item.Director)<br />
                             @Html.DisplayNameFor(model => model.ReleaseYear)   : @Html.DisplayFor(modelItem => item.ReleaseYear)<br />

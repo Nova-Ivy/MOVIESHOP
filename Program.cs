@@ -21,6 +21,9 @@ namespace VanillaMovieShop
 			builder.Services.AddScoped<IMovieService, MovieService>();
 
             builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+            builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(20));
+
             var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -34,9 +37,12 @@ namespace VanillaMovieShop
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseRouting();
+            
 
-			app.UseAuthorization();
+            app.UseRouting();
+            app.UseSession();
+
+            app.UseAuthorization();
 
 			app.MapControllerRoute(
 				name: "default",
