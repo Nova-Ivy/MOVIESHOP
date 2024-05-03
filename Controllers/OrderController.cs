@@ -2,6 +2,9 @@
 using VanillaMovieShop.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using VanillaMovieShop.Services;
+using VanillaMovieShop.Models.ViewModels;
+using VanillaMovieShop.Models.Db;
+using System.Linq;
 
 namespace VanillaMovieShop.Controllers
 {
@@ -28,27 +31,59 @@ namespace VanillaMovieShop.Controllers
             return View();
         }
       
-        //public IActionResult AddToCart(int movieId)
-
-        //{
-
-        //    var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
-        //    cartList.Add(movieId);
-
-        //   HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
-
-        //   return RedirectToAction("Index", "Movie");
-
-     
-        //}
+        
 
         [HttpPost]
-        public IActionResult AddToCart(int movieId)
+        public IActionResult AddToCart(int id)
         {
-            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
-            cartList.Add(movieId);
+           var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Add(id);
+            var count= cartList.Count;
             HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
-            return Json(new { Value = cartList.Count() });
+            return Json(count );
+            //return Json(new { Value = cartList.Count() });
+        }
+        public IActionResult ShoppingCart()
+        {
+            List<CartItemVM> cartItemVM = new List<CartItemVM>();
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart").ToList();
+            Decimal totalSum = 0;
+            foreach (var item in cartList)
+            {
+                Movie mov = _movieService.GetMovieById(item);
+                bool found = false;
+                foreach (var itemVM in cartItemVM) { 
+                    if (itemVM.Movie == mov)
+                    {
+                        found = true;
+                    }
+                }
+                
+                if (!found) {
+                    CartItemVM add = new CartItemVM();
+                    add.Movie = mov;
+                    add.Quantity = 1;
+                    add.Subtotal = mov.Price;
+                    totalSum += mov.Price;
+                    cartItemVM.Add(add);
+                } 
+                else
+                {
+                    CartItemVM old = new CartItemVM();
+                    old = cartItemVM.Find(m => m.Movie == mov);
+                    old.Quantity++;
+                    old.Subtotal += mov.Price;
+                    totalSum += mov.Price;
+                }
+            }
+
+            CartVM cartVM = new CartVM()
+            {
+                CartItems = cartItemVM,
+                Total = totalSum,
+            };
+            
+            return View( cartVM);
         }
     }
 }

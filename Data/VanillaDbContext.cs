@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using VanillaMovieShop.Models.Db;
+using VanillaMovieShop.Models.ViewModels;
 
 namespace VanillaMovieShop.Data
 {
@@ -15,6 +16,7 @@ namespace VanillaMovieShop.Data
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<OrderRow> OrderRows { get; set; }
+        public DbSet<VanillaMovieShop.Models.ViewModels.CartVM> CartVM { get; set; } = default!;
 	}
 	
 }
