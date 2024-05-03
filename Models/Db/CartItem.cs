@@ -7,6 +7,6 @@ namespace VanillaMovieShop.Models.Db
         
         public int Count { get; set; }
         public int Subtotal { get; set; }
-        public Movie movie { get; set; }
+        public Movie Movie { get; set; }
     }
 }

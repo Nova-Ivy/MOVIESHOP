@@ -7,7 +7,7 @@
         {
 
             <div class="col-md-2 card m-3">
-                <img class="p-2 card-img-top" src="/Images/@item.Image" style="height:250px"  alt="Image">
+                <img class="p-2 mt-2 card-img-top" src="/Images/@item.Image" style="height:250px"  alt="Image">
                 @* @Html.DisplayFor(modelItem => item.Image)  *@
 
                 <div class="card-body">
@@ -20,9 +20,26 @@
                     @Html.DisplayNameFor(model => model.Actors)        : @Html.DisplayFor(modelItem => item.Actors)<br />
 
                 </div>
- <a href="#" class="btn btn-primary text-white">Add to Cart</a>
-
+                <button class="btn btn-primary" onclick="AddToCart(@item.Id)">Add to cart</button><br />
+               @*  <form asp-action="AddToCart">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Add to Cart" class="btn btn-success" />
+                </form> *@
   </div>
 }
   </div>
 </div>
+@* <script>
+  
+            function AddToCart(movieId) {
+                $.ajax({
+                    type: 'post',
+                    url: '/Order/AddToCart',
+                    dataType: 'json',
+                    data: { id: movieId },
+                    success: function (count) {
+                        $('#cartCount').html(count);
+                    }
+                })
+            }
+</script> *@
