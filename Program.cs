@@ -12,7 +12,7 @@ namespace VanillaMovieShop
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidCastException("Default Connection not found");
+            var connectionString = builder.Configuration.GetConnectionString("LocalConnection") ?? throw new InvalidCastException("Default Connection not found");
 
 			builder.Services.AddDbContext<VanillaDbContext>(
 			options => options.UseSqlServer(connectionString)
