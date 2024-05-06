@@ -32,18 +32,44 @@ namespace VanillaMovieShop.Controllers
         {
             return View();
         }
-      
-        
+
+        [HttpPost]
+        public IActionResult GetCartCount()
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
+        }
 
         [HttpPost]
         public IActionResult AddToCart(int id)
         {
-           var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
             cartList.Add(id);
-            var count= cartList.Count;
+            var count = cartList.Count;
             HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
-            return Json(count );
-            //return Json(new { Value = cartList.Count() });
+            return Json(count);
+        }
+
+        [HttpPost]
+        public IActionResult PlusItem(int id)
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Add(id);
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
+        }
+
+        [HttpPost]
+        public IActionResult MinusItem(int id)
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Remove(id);
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
         }
         public IActionResult ShoppingCart()
         {
@@ -85,7 +111,7 @@ namespace VanillaMovieShop.Controllers
                 Total = totalSum,
             };
             
-            return View( cartVM);
+            return View(cartVM);
         }
         public IActionResult CustomerOrders()
         {

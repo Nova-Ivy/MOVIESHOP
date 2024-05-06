@@ -38,6 +38,17 @@ body {
     padding: 20px;
     font-size: 20px;
 }
+.icon-cart{
+
+}
+
+header .icon-cart {
+    position: relative;
+}
+
+header .icon-cart span {
+
+}
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media (max-width: 800px) {
