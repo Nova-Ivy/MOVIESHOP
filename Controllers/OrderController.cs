@@ -12,11 +12,13 @@ namespace VanillaMovieShop.Controllers
     {
         private readonly ICustomerService _customerService;
         private readonly IMovieService _movieService;
+        private readonly IOrderService _orderService;
 
-        public OrderController(ICustomerService customerService, IMovieService movieService)
+        public OrderController(ICustomerService customerService, IMovieService movieService, IOrderService orderService)
         {
             _customerService = customerService;
             _movieService = movieService;
+            _orderService = orderService;
         }
         public IActionResult Index()
         {
@@ -84,6 +86,17 @@ namespace VanillaMovieShop.Controllers
             };
             
             return View( cartVM);
+        }
+        public IActionResult CustomerOrders()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ShowCustomerOrderList(string email)
+        {
+            List<Order> customerOrders = _orderService.GetCustomerOrders(email);
+            
+            return View(customerOrders);
         }
     }
 }

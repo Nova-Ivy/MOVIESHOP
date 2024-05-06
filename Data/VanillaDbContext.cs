@@ -16,7 +16,6 @@ namespace VanillaMovieShop.Data
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<OrderRow> OrderRows { get; set; }
-        public DbSet<VanillaMovieShop.Models.ViewModels.CartVM> CartVM { get; set; } = default!;
 	}
 	
 }
