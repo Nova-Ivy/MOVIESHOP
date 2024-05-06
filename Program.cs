@@ -21,6 +21,7 @@ namespace VanillaMovieShop
 			builder.Services.AddScoped<IMovieService, MovieService>();
 
             builder.Services.AddScoped<ICustomerService, CustomerService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
 
             builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(20));
 

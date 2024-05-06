@@ -1,4 +1,5 @@
-﻿using VanillaMovieShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using VanillaMovieShop.Data;
 using VanillaMovieShop.Models.Db;
 
 namespace VanillaMovieShop.Services
@@ -7,6 +8,7 @@ namespace VanillaMovieShop.Services
     {
         private readonly VanillaDbContext _db;
         private readonly IConfiguration _configuration;
+   
         public OrderService(VanillaDbContext db, IConfiguration configuration)
         {
             _db = db;
@@ -40,8 +42,25 @@ namespace VanillaMovieShop.Services
             _db.Orders.Remove(order);
             _db.SaveChanges();
         }
+        public List<Order> GetCustomerOrders(string email)
+        {
+            var customer = _db.Customers.FirstOrDefault(c => c.Email == email);
 
-       
+            if (customer == null)
+            {
+                return null;
+            }
+            var customerOrders = _db.Orders
+                  .Where(o => o.CustomerId == customer.Id)
+                  .Include(o => o.OrderRows)
+                      .ThenInclude(or => or.Movie)
+                      .Include(o => o.Customer)
+                  .ToList();
+
+            return customerOrders;
+        }
+
+
 
     }
 }
