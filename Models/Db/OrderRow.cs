@@ -12,5 +12,6 @@ namespace VanillaMovieShop.Models.Db
 
         public virtual Movie Movie { get; set; }
         public virtual Order Order { get; set; }
+
     }
 }

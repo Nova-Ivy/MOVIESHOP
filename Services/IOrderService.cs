@@ -9,7 +9,9 @@ namespace VanillaMovieShop.Services
         public int AddOrder(Customer customer, List<int> movieIds);
         public void EditOrder(Order order);
         public void DeleteOrder(Order order);
+        List<Order> GetCustomerOrders(string email);
 
       
     }
+
 }

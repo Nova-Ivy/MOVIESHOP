@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanillaMovieShop.Data;
 
@@ -12,11 +11,9 @@ using VanillaMovieShop.Data;
 namespace VanillaMovieShop.Migrations
 {
     [DbContext(typeof(VanillaDbContext))]
-    [Migration("20240429080823_InitialLocal")]
-    partial class InitialLocal
+    partial class VanillaDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,6 +139,8 @@ namespace VanillaMovieShop.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Orders");
                 });
 
@@ -153,20 +152,62 @@ namespace VanillaMovieShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("MovieId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("OrderId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("OrderId");
+
                     b.ToTable("OrderRows");
+                });
+
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.Order", b =>
+                {
+                    b.HasOne("VanillaMovieShop.Models.Db.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.OrderRow", b =>
+                {
+                    b.HasOne("VanillaMovieShop.Models.Db.Movie", "Movie")
+                        .WithMany("OrderRows")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VanillaMovieShop.Models.Db.Order", "Order")
+                        .WithMany("OrderRows")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.Movie", b =>
+                {
+                    b.Navigation("OrderRows");
+                });
+
+            modelBuilder.Entity("VanillaMovieShop.Models.Db.Order", b =>
+                {
+                    b.Navigation("OrderRows");
                 });
 #pragma warning restore 612, 618
         }

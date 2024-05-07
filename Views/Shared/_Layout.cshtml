@@ -36,11 +36,25 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="ShoppingCart">My Cart</a>
+                            <a class="nav-link text-dark icon-cart" asp-area="" asp-controller="Order" asp-action="ShoppingCart">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                                </svg>
+                                <span id="cartCount"> 0 </span>
+                            </a>
+                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="CustomerOrders">CustomerOrderlist</a>
                         </li>
 
                     </ul>
-                    <div id="cartCount"></div>
+                    @*  <div class="icon-cart" id="cartCount">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                        </svg>
+                       <span>0</span> 
+                    </div> *@  
                 </div>
             </div>
         </nav>
@@ -55,7 +69,7 @@
         <div class="container text-white text-center ">
             &copy; 2024 - VanillaMovieShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             
-                </t> vanillaMS@gmail.com : &#x2709;
+                <t> vanillaMS@gmail.com : &#x2709;</t>
             
            
         </div>

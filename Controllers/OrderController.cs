@@ -14,6 +14,7 @@ namespace VanillaMovieShop.Controllers
         private readonly ICustomerService _customerService;
         private readonly IMovieService _movieService;
         private readonly IOrderService _orderService;
+
         private readonly VanillaDbContext _dbContext;
 
         public OrderController(ICustomerService customerService, IMovieService movieService, IOrderService orderService, VanillaDbContext vanillaDbContext)
@@ -22,6 +23,7 @@ namespace VanillaMovieShop.Controllers
             _movieService = movieService;
             _orderService = orderService;
             _dbContext = vanillaDbContext;
+
         }
         public IActionResult Index()
         {
@@ -55,7 +57,14 @@ namespace VanillaMovieShop.Controllers
             return View();
         }
 
-
+        [HttpPost]
+        public IActionResult GetCartCount()
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
+        }
 
         [HttpPost]
         public IActionResult AddToCart(int id)
@@ -65,7 +74,25 @@ namespace VanillaMovieShop.Controllers
             var count = cartList.Count;
             HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
             return Json(count);
-            //return Json(new { Value = cartList.Count() });
+        }
+
+        [HttpPost]
+        public IActionResult PlusItem(int id)
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Add(id);
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
+        }
+        [HttpPost]
+        public IActionResult MinusItem(int id)
+        {
+            var cartList = HttpContext.Session.Get<List<int>>("ShoppingCart") ?? new List<int>();
+            cartList.Remove(id);
+            var count = cartList.Count;
+            HttpContext.Session.Set<List<int>>("ShoppingCart", cartList);
+            return Json(count);
         }
         public IActionResult ShoppingCart()
         {
@@ -107,9 +134,19 @@ namespace VanillaMovieShop.Controllers
             {
                 CartItems = cartItemVM,
                 Total = totalSum,
-            };
-
+            };            
             return View(cartVM);
+        }
+        public IActionResult CustomerOrders()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ShowCustomerOrderList(string email)
+        {
+            List<Order> customerOrders = _orderService.GetCustomerOrders(email);
+            
+            return View(customerOrders);
         }
     }
 }
