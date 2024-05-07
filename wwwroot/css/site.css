@@ -47,7 +47,17 @@ header .icon-cart {
 }
 
 header .icon-cart span {
-
+    display: flex;
+    width:20px;
+    height:20px;
+    background-color: red;
+    justify-content:center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    position:absolute;
+    top:50%;
+    right:-20px;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -60,7 +70,7 @@ header .icon-cart span {
 
 .card {
     opacity: 0.9;
-    filter: alpha(opacity=60);
+    filter: alpha (opacity=60);
 }
 
 .card-title {

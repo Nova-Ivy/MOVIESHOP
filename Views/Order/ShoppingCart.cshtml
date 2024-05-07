@@ -71,19 +71,40 @@
 
 
                 }
-        <td colspan="2" class="text-center">  </strong></td>
-        <td  class="text-center"> <strong> @Html.DisplayNameFor(model => model.Total) : </strong></td>
-        <td> <strong>  @Html.DisplayFor(model => model.Total) kr </strong> </td>
-        </tr>
+            <td colspan="2" class="text-center">    </td>
+            <td  class="text-center">
+                <strong> @Html.DisplayNameFor(model => model.Total) : </strong>
+            </td>
 
+            <td> 
+            <strong>  @Html.DisplayFor(model => model.Total) kr </strong>
+            </td>
+            
+        </tr>
 
         </tbody>
 
+       
     </table>
+    <table>
 
+        
+        <td class="col-10 "></td>
+        
+        <td>
+            <div class="card">
+                <div class="card-body end-50">
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                </div>
+            </div>
+        </td>
+        
+
+    </table>
+   
     <br />
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <div class="p-3">
+        
         <a asp-controller="Movies" asp-action="Index">Continue Shop</a>
     </div>
 
