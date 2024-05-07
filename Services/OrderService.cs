@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VanillaMovieShop.Data;
 using VanillaMovieShop.Models.Db;
+using VanillaMovieShop.Models.ViewModels;
 
 namespace VanillaMovieShop.Services
 {
@@ -27,10 +28,28 @@ namespace VanillaMovieShop.Services
             return orders;
         }
 
-        public void AddOrder(Order order)
+        public int AddOrder(Customer customer, List<int> movieIds)
         {
+
+            var order = new Order
+            {
+                Customer = customer,
+                OrderDate = DateTime.Now
+            };
+            
+            foreach (var movieId in movieIds) 
+            {
+                order.OrderRows.Add(new()
+                {
+                    MovieId = movieId,
+                    Price = _db.Movies.Find(movieId)!.Price
+                });
+            }
+
             _db.Orders.Add(order);
             _db.SaveChanges();
+
+            return _db.Orders.OrderByDescending(o => o.OrderDate).FirstOrDefault()!.Id;
         }
         public void EditOrder(Order order)
         {

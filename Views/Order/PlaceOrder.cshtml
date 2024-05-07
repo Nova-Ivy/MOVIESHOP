@@ -1,0 +1,21 @@
+﻿@*
+   
+*@
+@{
+    ViewData["Title"] = "PlaceOrder";
+}
+<h1>Enter your email</h1>
+<div></div>
+<div class-"offset-sm-4">
+    <form asp-action="PlaceOrder">
+        <div class="mb-3">    
+            <input type="email" class="form-control-lg" name="emailAddress" id="emailaddress" aria-describedby="emailHelp"/>
+            <div id="emailHelp" class="form-text">Leave empty if new customer</div>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Checkout</button>
+    </form>
+</div>
+
+
+

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Net.Mail;
 using VanillaMovieShop.Models.Db;
 using VanillaMovieShop.Models.ViewModels;
 using VanillaMovieShop.Services;
@@ -33,7 +35,7 @@ namespace VanillaMovieShop.Controllers
             if (ModelState.IsValid)
             {
                 _customerService.AddCustomer(customer);
-                return RedirectToAction("Index");
+                return RedirectToAction("PlaceOrder", "Order", new { emailAdress = customer.Email });
             }
             return View(customer);
         }
