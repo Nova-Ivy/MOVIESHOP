@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<VanillaMovieShop.Models.Db.Movie>
 
 
-
+<h1 class="text-center"> Our Top Oldest Movies</h1>
+<br />
     <div class="container-fluid ">
         <div class="row gy-4">
             @* card-deck *@
@@ -21,18 +22,14 @@
                             @Html.DisplayNameFor(model => model.Price)         : @Html.DisplayFor(modelItem => item.Price)<br />
                             @Html.DisplayNameFor(model => model.Genre)         : @Html.DisplayFor(modelItem => item.Genre)<br />
                             @Html.DisplayNameFor(model => model.Actors)        : @Html.DisplayFor(modelItem => item.Actors)<br />
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
+                       
                         </div>
 
                         <a href="#" class="btn btn-primary text-white">Add to Cart</a>
             
                     </div>
                 </div>
-
+            
 
             }
         </div>
