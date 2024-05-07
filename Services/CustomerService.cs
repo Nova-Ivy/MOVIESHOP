@@ -34,7 +34,14 @@ namespace VanillaMovieShop.Services
         {
             var customer = _db.Customers.OrderBy(c => c.LastName).ToList();
             return customer;
-        }    
+        }
+
+        public Customer GetCustomersByEmail(string email)
+        {
+            var customer = _db.Customers.Where(c => c.Email == email).FirstOrDefault();
+            return customer!;
+        }
+
         public void AddCustomer(Customer customer)
         { 
             _db.Customers.Add(customer);
@@ -55,7 +62,5 @@ namespace VanillaMovieShop.Services
             _db.Customers.Remove(customer);
             _db.SaveChanges();
         }
-     
-
     }
 }

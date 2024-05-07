@@ -6,7 +6,7 @@ namespace VanillaMovieShop.Services
     {
         List<Order> GetAllOrders();
         Order GetOrderById(int id);
-        public void AddOrder(Order order);
+        public int AddOrder(Customer customer, List<int> movieIds);
         public void EditOrder(Order order);
         public void DeleteOrder(Order order);
 

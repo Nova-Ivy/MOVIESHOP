@@ -10,7 +10,7 @@ namespace VanillaMovieShop.Services
         List<Customer> GetCustomersByFname();
         List<Customer> GetCustomersByLname();
         //List<Customer> GetCustomerByOrderId();
-
+        Customer GetCustomersByEmail(string email);
         void AddCustomer(Customer customer);
         void ViewCustomers(int id);
         void EditCustomer(Customer customer);        

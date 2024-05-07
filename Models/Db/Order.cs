@@ -12,5 +12,8 @@ namespace VanillaMovieShop.Models.Db
         [Required]
         public int CustomerId { get; set; }
 
+        public virtual Customer Customer { get; set; }
+
+        public virtual ICollection<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
     }
 }
