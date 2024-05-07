@@ -18,5 +18,8 @@ namespace VanillaMovieShop.Models.Db
         public virtual ICollection<OrderRow> OrderRows { get; set; } =new List<OrderRow>();
 
 
+        public virtual Customer Customer { get; set; }
+
+        public virtual ICollection<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
     }
 }
